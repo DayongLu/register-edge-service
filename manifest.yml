@@ -1,0 +1,15 @@
+---
+applications:
+- name: register-edge-service
+  memory: 1024M
+  instances: 1
+  stack: cflinuxfs2
+  env:
+    logging.level.ROOT: INFO
+    spring.application.name: register-edge-service
+    spring.application.index: ${random.uuid}
+    management.security.enabled: false
+    security.basic.enabled: false
+  path: ./target/register-edge-service-0.0.1-SNAPSHOT.jar
+  services:
+    - paradyme-registry-service
